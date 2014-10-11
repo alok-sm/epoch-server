@@ -9,8 +9,13 @@ class RssController < ApplicationController
   		post = Article.new
   		post.title = entry.title
   		post.code = entry.summary
-  		post.photo = entry.summary.scan(/<img.*?src=\".*?\".*?\/>/)[0].scan(/src=\".*?\"/)[0].slice(5..-2)
-
+  		pic = entry.summary.scan(/<img.*?src=\".*?\".*?\/>/)[0]
+  		if(pic.nil?) 
+  			pic = 'null'
+  		else
+  			pic = pic.scan(/src=\".*?\"/)[0].slice(5..-2)
+  		end
+  		post.photo = pic
   		post.category = category
   		post.time = "5m"
   		post.save
