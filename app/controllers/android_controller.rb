@@ -69,19 +69,22 @@ class AndroidController < ApplicationController
       reply += title+'$,'
     end
     if(reply != '')
-      reply[-1] = '$;'
+      reply[-2] = '$'
+      reply[-1] = ';'
     end
   	titles.each do |title|
   		reply += title+'$,'
   	end
   	if(reply != '')
-  		reply[-1] = '$;'
+  		reply[-2] = '$'
+      reply[-1]= ';'
   	end
   	fotos.each do |title|
   		reply += title+'$,'
   	end
   	if(reply != '')
-  		reply[-1] = '$;'
+  		reply[-2] = '$'
+      reply[-1]=';'
   	end
   	cats.each do |title|
   		reply += title+'$,'
