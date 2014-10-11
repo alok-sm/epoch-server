@@ -2,20 +2,33 @@ class AndroidController < ApplicationController
   def stats
     stats = UserStat.where(:user_email => params[:email])
     count = {}
+    points = []
     stats.each do |s|
+      points << s.points
       if(count[s.category].nil?)
         count[s.category] = 1
       else
         count[s.category]+=1
       end
     end
-    pie = Gchart.pie(
+    @pie = Gchart.pie(
+      :title => 'Most viewed categories',
       :line_colors => '00a1e2',
       :labels => count.keys, 
       :data => count.values, 
-      :size => '500x300'
+      :size => '400x250'
     )
-    raise 'alok'
+
+    @line = Gchart.line(
+      :title => 'Self improvement over time',
+      :data => points, 
+      :size => '400x250', 
+      :line_colors => '00a1e2',
+      :axis_with_labels => 'y',
+      :axis_labels => ['0|1|2|3|4|5|6|7|8|9|10']
+    )
+    @avg = (points.inject{ |sum, el| sum + el }.to_f / points.size).round(1)
+    # render :json => line+"@"+pie+"@"+(avg.round(1)).to_s
   end
   def fetch
   	reply = ''
