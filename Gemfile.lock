@@ -53,6 +53,7 @@ GEM
       curb (~> 0.8)
       loofah (~> 2.0)
       sax-machine (~> 1.0)
+    googlecharts (1.6.8)
     hike (1.2.3)
     i18n (0.6.11)
     jbuilder (2.2.2)
@@ -148,6 +149,7 @@ DEPENDENCIES
   binding_of_caller
   coffee-rails (~> 4.0.0)
   feedjira
+  googlecharts
   jbuilder (~> 2.0)
   jquery-rails
   pg (= 0.15.1)

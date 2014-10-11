@@ -1,4 +1,22 @@
 class AndroidController < ApplicationController
+  def stats
+    stats = UserStat.where(:user_email => params[:email])
+    count = {}
+    stats.each do |s|
+      if(count[s.category].nil?)
+        count[s.category] = 1
+      else
+        count[s.category]+=1
+      end
+    end
+    pie = Gchart.pie(
+      :line_colors => '00a1e2',
+      :labels => count.keys, 
+      :data => count.values, 
+      :size => '500x300'
+    )
+    raise 'alok'
+  end
   def fetch
   	reply = ''
   	category_list = params[:categories]
@@ -53,7 +71,26 @@ class AndroidController < ApplicationController
   end
   def renderview
     id = params[:id]
+    points = {
+      'art'=>6,
+      'education'=>10, 
+      'fitness'=>9,
+      'food'=>4,
+      'literature'=>8,
+      'movies'=>2,
+      'music'=>5,
+      'photography'=>7,
+      'science'=>10,
+      'sports'=>4,
+      'technology'=>6,
+      'television'=>1
+    }
     a = Article.find_by_id(id)
+    s = UserStat.new(
+      :user_email => params[:user_email], 
+      :points => points[a.category],
+      :category => a.category
+    ).save
     render :inline => a.code
   end
 end

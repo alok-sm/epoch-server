@@ -8,7 +8,11 @@ class RssController < ApplicationController
   	entries.each do |entry|
   		post = Article.new
   		post.title = entry.title
-  		post.code = entry.summary
+      if(entry.content.nil?)
+        post.code = entry.summary
+      else
+        post.code = entry.content
+      end
   		pic = entry.summary.scan(/<img.*?src=\".*?\".*?\/>/)[0]
   		if(pic.nil?) 
   			pic = 'null'

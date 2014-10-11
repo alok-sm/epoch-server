@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  get 'rss/extract'
+  resources :user_stats
 
+  get 'rss/extract'
+  get 'android/stats'
   get 'android/fetch'
   get 'android/renderview'
   resources :articles
