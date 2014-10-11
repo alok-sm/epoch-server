@@ -8,6 +8,7 @@
       <th>Photo</th>
       <th>Code</th>
       <th>Time</th>
+      <th>Subcategory</th>
       <th colspan="3"></th>
     </tr>
   </thead>
@@ -20,6 +21,7 @@
         <td><%= article.photo %></td>
         <td><%= article.code %></td>
         <td><%= article.time %></td>
+        <td><%= article.subcategory %></td>
         <td><%= link_to 'Show', article %></td>
         <td><%= link_to 'Edit', edit_article_path(article) %></td>
         <td><%= link_to 'Destroy', article, method: :delete, data: { confirm: 'Are you sure?' } %></td>

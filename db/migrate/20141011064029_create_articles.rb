@@ -6,6 +6,7 @@ class CreateArticles < ActiveRecord::Migration
       t.string :photo
       t.string :code
       t.string :time
+      t.string :subcategory
 
       t.timestamps
     end

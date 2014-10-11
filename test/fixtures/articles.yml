@@ -6,6 +6,7 @@ one:
   photo: MyString
   code: MyString
   time: MyString
+  subcategory: MyString
 
 two:
   title: MyString
@@ -13,3 +14,4 @@ two:
   photo: MyString
   code: MyString
   time: MyString
+  subcategory: MyString
