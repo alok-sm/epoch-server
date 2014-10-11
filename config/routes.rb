@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
-  get 'android/fetch'
+  get 'rss/extract'
 
+  get 'android/fetch'
+  get 'android/renderview'
   resources :articles
   resources :subcategories
 
