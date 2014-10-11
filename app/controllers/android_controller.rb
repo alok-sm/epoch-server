@@ -108,7 +108,7 @@ class AndroidController < ApplicationController
       'photography'=>7,
       'science'=>10,
       'sports'=>4,
-      'technology'=>6,
+      'technology'=>6, 
       'television'=>1
     }
     a = Article.find_by_id(id)
@@ -117,6 +117,12 @@ class AndroidController < ApplicationController
       :points => points[a.category],
       :category => a.category
     ).save
-    render :inline => a.code
+    code =  "<link href=\"//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/css/bootstrap.min.css\" rel=\"stylesheet\">"+
+            "<div class=\"container\">"+
+            a.code+
+            "</div>"+
+            "<script src=\"//ajax.googleapis.com/ajax/libs/jquery/2.1.1/jquery.min.js\"></script>"+
+            "<script src=\"//maxcdn.bootstrapcdn.com/bootstrap/3.2.0/js/bootstrap.min.js\"></script>"
+    render :inline => code
   end
 end
