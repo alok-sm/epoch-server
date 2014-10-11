@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
-  resources :articles
+  get 'android/fetch'
 
+  resources :articles
   resources :subcategories
 
   # The priority is based upon order of creation: first created -> highest priority.
