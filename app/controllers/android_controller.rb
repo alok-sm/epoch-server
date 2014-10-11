@@ -66,28 +66,29 @@ class AndroidController < ApplicationController
 
   	end
     ids.each do |title|
-      reply += title+','
+      reply += title+'$,'
     end
     if(reply != '')
-      reply[-1] = ';'
+      reply[-1] = '$;'
     end
   	titles.each do |title|
-  		reply += title+','
+  		reply += title+'$,'
   	end
   	if(reply != '')
-  		reply[-1] = ';'
+  		reply[-1] = '$;'
   	end
   	fotos.each do |title|
-  		reply += title+','
+  		reply += title+'$,'
   	end
   	if(reply != '')
-  		reply[-1] = ';'
+  		reply[-1] = '$;'
   	end
   	cats.each do |title|
-  		reply += title+','
+  		reply += title+'$,'
   	end
   	if(reply != '')
   		reply[-1] = ''
+      reply[-1] = ''
   	end
   	render :json => reply
   end
