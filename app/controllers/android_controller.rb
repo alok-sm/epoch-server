@@ -39,6 +39,15 @@ class AndroidController < ApplicationController
   	cats = []
     ids = []
   	min = params[:min]
+    if(not params[:loc].nil?)
+      loc = params[:loc]
+      if(loc == 'work' )
+        category_list.delete("fitness")
+        category_list.delete("art")
+       category_list.delete("health")
+         end
+    end
+
   	category_list.each do |category|
   		posts = Article.where(:category=>category,:time=>min)
   		if(posts==nil)
