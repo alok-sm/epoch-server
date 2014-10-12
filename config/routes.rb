@@ -2,6 +2,7 @@ Rails.application.routes.draw do
   resources :user_stats
 
   get 'rss/extract'
+  get 'android/subcategory'
   get 'android/stats'
   get 'android/fetch'
   get 'android/renderview'

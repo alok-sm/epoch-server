@@ -23,6 +23,13 @@ class RssController < ApplicationController
   		post.category = category
   		post.time = "5m"
   		post.save
+
+      sub = params[:subcategories]
+      if(not sub.nil?)
+        sub.split(',').each do |s|
+          Subcategory.new(:name => sub, :postid => post.id).save
+        end
+      end
   		
   	end
   	render :json => "Success"

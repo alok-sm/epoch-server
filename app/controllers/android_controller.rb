@@ -1,4 +1,17 @@
 class AndroidController < ApplicationController
+  def subcategory
+    a = Subcategory.where(:id => params[:id])
+    raise 'alok'
+    if(a.length == 0)
+      render :json => ""
+    else
+      names = []
+      a.each do |b|
+        names << b.name
+      end
+      render :json 
+    end
+  end
   def stats
     stats = UserStat.where(:user_email => params[:email])
     count = {}
@@ -16,13 +29,13 @@ class AndroidController < ApplicationController
       :line_colors => '00a1e2',
       :labels => count.keys, 
       :data => count.values, 
-      :size => '400x250'
+      :size => '350x250'
     )
 
     @line = Gchart.line(
       :title => 'Self improvement over time',
       :data => points, 
-      :size => '400x250', 
+      :size => '350x250', 
       :line_colors => '00a1e2',
       :axis_with_labels => 'y',
       :axis_labels => ['0|1|2|3|4|5|6|7|8|9|10']
